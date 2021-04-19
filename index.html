@@ -1,27 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>Boolflix</title>
-        <!-- font awesame -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
-        <!-- vue -->
-        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-        <!-- vue cdn axios     -->
-        <script src="https://cdn.jsdelivr.net/npm/axios@0.21.1/dist/axios.min.js"></script>
-        <!-- css -->
-        <link rel="stylesheet" href="style.css">
-        <!-- script -->
-        <script src="main.js"></script>
-    </head>
+
+<head>
+    <meta charset="utf-8">
+    <title>Boolflix</title>
+    <!-- font awesame -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    <!-- vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- vue cdn axios     -->
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.21.1/dist/axios.min.js"></script>
+    <!-- css -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- script -->
+    <script src="js/main.js"></script>
+</head>
+
 <body>
     <div id="app">
         <!-- barra di ricerca -->
         <div>
-            <input type="text" name="" id="search-box">
-            <button id="cerca">cerca</button>
+            <input @keyUp.enter ='getFilm' type="text" name="" v-model='searched' value="" id="search-box">
+            <button  id="cerca">cerca</button>
         </div>
+
+        <main>
+            <div v-for='film in films'>
+                <ul>
+                    <li>title: {{film.title}}</li>
+                    <li> original title: {{film.original_title}}</li>
+                    <li> voto: {{film.vote_average}}</li>
+                    <li> lingua: {{film.original_language}}</li>
+                </ul>
+            </div>
+            <div v-for='film in series'>
+                <ul>
+                    <li>title: {{film.name}}</li>
+                    <li> original title: {{film.original_name}}</li>
+                    <li> voto: {{film.vote_average}}</li>
+                    <li> lingua: {{film.original_language}}</li>
+                </ul>
+            </div>
+        </main>
 
     </div>
 </body>
+
 </html>
