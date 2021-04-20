@@ -8,7 +8,7 @@ function initVue() {
 
             films: [],
             series:[],
-
+            searched:'',
         },
         methods: {
 
@@ -22,15 +22,13 @@ function initVue() {
                             'query': this.searched,
                             'language': 'it-IT',
 
-
-
                         }
 
                     })
                     .then(data => {
 
                         this.films = data.data.results;
-
+                    
                     })
                     axios.get('https://api.themoviedb.org/3/search/tv', {
 
@@ -40,8 +38,6 @@ function initVue() {
                             'query': this.searched,
                             'language': 'it-IT',
 
-
-
                         }
 
                     })
@@ -49,53 +45,32 @@ function initVue() {
                     .then(data => {
 
                         this.series = data.data.results;
-
+                        
                     })
 
+            },
+            getRating:function (vote){
 
+                return Math.round((vote/2));
 
-                         
-
-
-
-
-
-
-            }
+            },       
+            
         }
-        // computed: {
-
-        //     filteredFilms: function () {
-
-        //         for (let i = 0; i < this.films.length; i++) {
-        //             const elem = this.films[i];
-        //             const title = elem.title;
-        //             if (title.toLowercase().includes(this.searchFilm.toLowerCase())) {
-
-        //                 this.films.push(elem)
-        //             }
-
-
-        //         }
-        //         return this.films
-        //     }
-        // }
-
+        
+        
     })
-
-
-}
-
-
-
-
-
-
-
+    
+    
+}   
+    
+    
+    
+    
 
 function init() {
+    
+    initVue();
 
-    initVue()
 
 }
 

@@ -1,5 +1,8 @@
 *{margin: 0;padding: 0;box-sizing: border-box}
-
+main{
+    display: flex;
+    flex-wrap: wrap;
+}
 ul li{
     margin: 20px;
     
@@ -7,4 +10,17 @@ ul li{
 
 ul{
     border: 1px solid black;
+}
+
+
+.cover{
+    
+    width: 500px;
+}
+
+.cover > img{
+    width: 200px;
+}
+li img{
+    width: 40px;
 }

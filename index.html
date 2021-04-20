@@ -20,25 +20,31 @@
     <div id="app">
         <!-- barra di ricerca -->
         <div>
-            <input @keyUp.enter ='getFilm' type="text" name="" v-model='searched' value="" id="search-box">
-            <button  id="cerca">cerca</button>
+            <input @keyUp.enter='getFilm' type="text" name="" v-model='searched' value="" id="search-box">
+            <button id="cerca">cerca</button>
         </div>
 
         <main>
-            <div v-for='film in films'>
+            <div class="cover" v-for='film in films'>
+                <img :src="'https://image.tmdb.org/t/p/w342' + film.poster_path" alt="">
                 <ul>
                     <li>title: {{film.title}}</li>
                     <li> original title: {{film.original_title}}</li>
                     <li> voto: {{film.vote_average}}</li>
-                    <li> lingua: {{film.original_language}}</li>
+                    <li class="lng"><img :src=" `../img/` + film.original_language 
+                        + `.jpg`" :alt='film.original_language'></li>
                 </ul>
             </div>
-            <div v-for='film in series'>
+            <div class="cover" v-for='film in series'>
+                <img :src="'https://image.tmdb.org/t/p/w342' + film.backdrop_path" alt="">
                 <ul>
                     <li>title: {{film.name}}</li>
                     <li> original title: {{film.original_name}}</li>
                     <li> voto: {{film.vote_average}}</li>
-                    <li> lingua: {{film.original_language}}</li>
+                    <li class="lng">
+                        <img :src=" `../img/` + film.original_language 
+                        + `.jpg`" :alt='film.original_language'>
+                    </li>
                 </ul>
             </div>
         </main>
