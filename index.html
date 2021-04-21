@@ -18,60 +18,85 @@
 
 <body>
     <div id="app">
-        <!-- barra di ricerca -->
-        <div>
-            <input @keyUp.enter='getFilm' type="text" name="" v-model='searched' value="" id="search-box">
-            <button id="cerca">cerca</button>
-        </div>
 
+        <header>
+            <ul>
+               <li id="logo"> <img src="img/logo.png" alt="logo"></li>
+                <li>Home</li>
+                <li>Serie Tv</li>
+                <li>Film</li>
+                <li>Nuovi e Popolari</li>
+                <li>la Mia Lista</li>
+            </ul>
+            
+            <!-- barra di ricerca -->
+            <div>
+                <button @click='getFilm' id="cerca"><i class="fas fa-search"></i></button>
+                <input @keyUp.enter='getFilm' type="text" name="" v-model='searched' value="" id="search-box">
+            </div>
+        </header>
+            
+
+        
+        
         <main>
             <div class="cover" v-for='film in films'>
-                <h2>FILM</h2>
-                <img v-if='film.poster_path' :src="'https://image.tmdb.org/t/p/w342' + film.poster_path" alt="">
-                <img v-else src="img/notfound.png" alt="">
-                <ul>
-                    <li>title: {{film.title}}</li>
-                    <li> original title: {{film.original_title}}</li>
-                    <li class="lng">
-                        <img v-if='film.original_language == "it" || film.original_language == "en"' :src=" `../img/` + film.original_language 
-                        + `.jpg`" >
-                        <i v-else>{{film.original_language}}</i>
+                <div class="layover">
+                    <img v-if='film.poster_path' :src="'https://image.tmdb.org/t/p/w342' + film.poster_path" alt="">
+                    <img v-else src="img/notfound.png" alt="">
+                </div>
 
-                    </li>
-                    <li >
-                        voto: 
-                        <i v-for='elem in getRating(film.vote_average)' class="fas fa-star" ></i>
-                        <i v-for='elem in restRating(film.vote_average)' class="far fa-star" ></i>
-
-                    </li>
-                </ul>
-            </div>
-
-            <div class="cover" v-for='film in series'>
-                <h2>SERIE TV</h2>
-                <img v-if='film.poster_path' :src="'https://image.tmdb.org/t/p/w342' + film.poster_path" alt="">
-                <img v-else src="img/notfound.png" alt="">
+                <div class="display">
+                    <ul class="title">
+                        <li>{{film.title}}</li>
+                        <li>{{film.original_title}}</li>
+                        <li class="lng">
+                            <img v-if='film.original_language == "it" || film.original_language == "en"' :src=" `img/` + film.original_language 
+                            + `.jpg`" >
+                            <i v-else>{{film.original_language}}</i>
+                            
+                        </li>
+                        <li >
+                            voto: 
+                            <i v-for='elem in getRating(film.vote_average)' class="fas fa-star" ></i>
+                            <i v-for='elem in restRating(film.vote_average)' class="far fa-star" ></i>
+                            <li v-if='film.overview'> Overview:{{film.overview}}</li>
+                        </li>
+                    </ul>
+                </div>
                 
-                <ul>
-                    <li>title: {{film.name}}</li>
-                    <li> original title: {{film.original_name}}</li>
-                    <li class="lng">
-                        <img v-if='film.original_language == "it" || film.original_language == "en"' :src=" `../img/` + film.original_language 
-                        + `.jpg`" >
-                        <i v-else>{{film.original_language}}</i>
+                
+            </div>
+            
+            <div class="cover" v-for='film in series'>
+                
+                <div class="layover">
+                    <img v-if='film.poster_path' :src="'https://image.tmdb.org/t/p/w342' + film.poster_path" alt="">
+                    <img v-else src="img/notfound.png" alt="">
+                </div>
+                <div class="display">
+                    <ul class="title">
+                        <li>title: {{film.name}}</li>
+                        <li> original title: {{film.original_name}}</li>
+                        <li class="lng">
+                            <img v-if='film.original_language == "it" || film.original_language == "en"' :src=" `img/` + film.original_language 
+                            + `.jpg`" >
+                            <i v-else>{{film.original_language}}</i>
+                            
+                        </li>
+                        <li>
+                            voto: 
+                            <i v-for='elem in getRating(film.vote_average)' class="fas fa-star" ></i>
+                            <i v-for='elem in restRating(film.vote_average)' class="far fa-star" ></i>
+                        </li>
+                        <li v-if='film.overview'> Overview:{{film.overview}}</li>
+                    </ul>
+                </div>
 
-                    </li>
-                    <li>
-                        voto: 
-                        <i v-for='elem in getRating(film.vote_average)' class="fas fa-star" ></i>
-                        <i v-for='elem in restRating(film.vote_average)' class="far fa-star" ></i>
-                    </li>
                     
-                    
-                </ul>
             </div>
         </main>
-
+        
     </div>
 </body>
 
