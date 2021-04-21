@@ -51,9 +51,13 @@ function initVue() {
             },
             getRating:function (vote){
 
-                return Math.round((vote/2));
+                return Math.floor(vote/2);
 
-            },       
+            },
+            restRating:function(vote){
+
+                return 5 - this.getRating(vote);
+            }       
             
         }
         
