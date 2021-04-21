@@ -39,7 +39,7 @@
 
                     </li>
                     <li >
-                        voto: {{Math.floor(film.vote_average / 2)}}
+                        voto: 
                         <i v-for='elem in getRating(film.vote_average)' class="fas fa-star" ></i>
                         <i v-for='elem in restRating(film.vote_average)' class="far fa-star" ></i>
 
@@ -62,7 +62,7 @@
 
                     </li>
                     <li>
-                        voto: {{Math.floor(film.vote_average / 2)}}
+                        voto: 
                         <i v-for='elem in getRating(film.vote_average)' class="fas fa-star" ></i>
                         <i v-for='elem in restRating(film.vote_average)' class="far fa-star" ></i>
                     </li>
